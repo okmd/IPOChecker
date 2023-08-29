@@ -1,0 +1,26 @@
+body {
+    font-family: Arial, sans-serif;
+    min-width: 300px;
+    padding: 10px;
+
+}
+
+#inputValues {
+    min-height: 100px;
+}
+
+.pan-card {
+    display: inline-block;
+    width: 150px;
+    /* Adjust the width according to your needs */
+}
+
+.alloted {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.na {
+    color: #f44336;
+    font-weight: bold;
+}

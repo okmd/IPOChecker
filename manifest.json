@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "IPO Checker",
+  "version": "1.0",
+  "description": "Check IPO allotment.",
+  "permissions": [
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://linkintime.co.in/*"
+  ],
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://linkintime.co.in/*"
+      ],
+      "js": [
+        "js/jquery.min.js",
+        "js/content_script.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>IPO Allotment Checker</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/popup.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h5 class="title">IPO Allotment Checker</h5>
+        <hr>
+
+        <!-- IPO Checking Section -->
+        <div class="section">
+            <div class="form-group">
+                <!-- <button type="submit" id="syncIPO" class="btn btn-primary">Syn</button> -->
+                <select id="selectIpo" class="form-control" placeholder="Select">
+                    <!-- Options will be dynamically added through JavaScript -->
+                </select>
+            </div>
+
+            <div class="form-group">
+                <textarea id="inputValues" rows="7" class="form-control" required
+                    placeholder="Enter comma-separated PAN cards."></textarea>
+            </div>
+
+            <button id="checkButton" class="btn btn-success">Check Allotment</button>
+
+            <div class="response-container" id="responseContainer">
+                <!-- Responses will be dynamically added through JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Bootstrap JS and custom JS -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/popup.js"></script>
+</body>
+
+</html>
