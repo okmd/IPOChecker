@@ -1,8 +1,12 @@
 // Util function to format PAN card and allotment status
-function formatOutput(panCard, qty) {
-    const panCardFormatted = panCard.padEnd(20, ' ');
-    const qtyFormatted = qty ? `<span class="alloted">Alloted: ${qty[1]}</span>` : `<span class="na">Not Found</span>`;
-    return `<div class="response-container"><span class="pan-card">${panCardFormatted}</span>${qtyFormatted}</div>`;
+function formatOutput(panCard, details) {
+    console.log(details);
+    const panCardFormatted = panCard.padEnd(10, ' ');
+    const qtyFormatted = details[0]!=null && details[1]!=null ? 
+    `<div class="name_css col-7">${details[0][1]}</div>
+     <div class="qty_css col-1">${details[1][1]}</div>` :
+    `<div class="na col-8">Not Found</div>`;
+    return `<div class="pan_card col-4">${panCardFormatted}</div>${qtyFormatted}`;
 }
 
 // Fetch IPO allotment details from the LinkInTime server
@@ -16,7 +20,9 @@ async function fetchAllotmentDetails(clientId, panCard) {
 
         if (!response.ok) throw new Error(`Request failed with status ${response.status}`);
         const data = await response.json();
-        return /<ALLOT>(.*?)<\/ALLOT>/g.exec(data.d);
+        const qty = /<NAME1>(.*?)<\/NAME1>/g.exec(data.d);
+        const alloted = /<ALLOT>(.*?)<\/ALLOT>/g.exec(data.d);
+        return [qty, alloted];
     } catch (error) {
         error =  `${panCard}\tError: ${error.message}`;
         sendErrorMessage(error)
@@ -26,8 +32,8 @@ async function fetchAllotmentDetails(clientId, panCard) {
 
 // Check IPO allotment and fetch formatted output
 async function checkIPO(clientId, panCard) {
-    const qty = await fetchAllotmentDetails(clientId, panCard);
-    return formatOutput(panCard, qty);
+    const details = await fetchAllotmentDetails(clientId, panCard);
+    return formatOutput(panCard, details);
 }
 
 // Populate select options in the popup
@@ -65,6 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
         for (const panCard of panCards) {
             const formattedOutput = await checkIPO(clientId, panCard);
             const responseElement = document.createElement("div");
+            responseElement.classList.add('row');
             responseElement.innerHTML = formattedOutput;
             responseContainer.appendChild(responseElement);
         }

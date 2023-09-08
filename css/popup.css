@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    min-width: 300px;
+    min-width: 450px;
     padding: 10px;
 
 }
@@ -9,13 +9,20 @@ body {
     min-height: 100px;
 }
 
-.pan-card {
-    display: inline-block;
-    width: 150px;
-    /* Adjust the width according to your needs */
+.col, .col-1, .col-7, .col-8, .col-4 {
+    padding: 0px;
 }
 
-.alloted {
+.pan_card {
+    color: #e41612;
+}
+
+.name_css {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.qty_css {
     color: #4CAF50;
     font-weight: bold;
 }
