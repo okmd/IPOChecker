@@ -1,12 +1,12 @@
 // Util function to format PAN card and allotment status
-function formatOutput(panCard, details) {
+function formatOutput(panCard, details, count) {
     console.log(details);
     const panCardFormatted = panCard.padEnd(10, ' ');
     const qtyFormatted = details[0]!=null && details[1]!=null ? 
     `<div class="name_css col-7">${details[0][1]}</div>
      <div class="qty_css col-1">${details[1][1]}</div>` :
     `<div class="na col-8">Not Found</div>`;
-    return `<div class="pan_card col-4">${panCardFormatted}</div>${qtyFormatted}`;
+    return `<div class="pan_card col-4">${count}:${panCardFormatted}</div>${qtyFormatted}`;
 }
 
 // Fetch IPO allotment details from the LinkInTime server
@@ -31,9 +31,9 @@ async function fetchAllotmentDetails(clientId, panCard) {
 }
 
 // Check IPO allotment and fetch formatted output
-async function checkIPO(clientId, panCard) {
+async function checkIPO(clientId, panCard, count) {
     const details = await fetchAllotmentDetails(clientId, panCard);
-    return formatOutput(panCard, details);
+    return formatOutput(panCard, details, count);
 }
 
 // Populate select options in the popup
@@ -67,9 +67,9 @@ document.addEventListener("DOMContentLoaded", () => {
         responseContainer.innerHTML = "";
         const clientId = document.getElementById("selectIpo").value;
         const panCards = document.getElementById("inputValues").value.split(/\s+/).map(s => s.trim());
-
+        let count = 1;
         for (const panCard of panCards) {
-            const formattedOutput = await checkIPO(clientId, panCard);
+            const formattedOutput = await checkIPO(clientId, panCard, count++);
             const responseElement = document.createElement("div");
             responseElement.classList.add('row');
             responseElement.innerHTML = formattedOutput;
