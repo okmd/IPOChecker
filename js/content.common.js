@@ -1,13 +1,3 @@
-function waitForElement(selector, callback) {
-    const observer = new MutationObserver((mutationsList, observer) => {
-        const element = document.querySelector(selector);
-        if (element) {
-            callback(element);
-            observer.disconnect();
-        }
-    });
-    observer.observe(document.body, { childList: true, subtree: true });
-}
 function initializeStatusDiv() {
     const statusContainer = document.createElement("div");
     const statusHeading = document.createElement("h4");
@@ -59,9 +49,3 @@ function populateOptionsFromHtml(select) {
 
     updateStatus(options.length + " IPOs Present.", "extensionStatusHead");
 }
-
-$(document).ready(function () {
-    initializeStatusDiv();
-    // Wait for the select element to be available
-    waitForElement('#ddlClient', populateOptionsFromHtml);
-});

@@ -7,7 +7,8 @@
     "tabs"
   ],
   "host_permissions": [
-    "https://linkintime.co.in/*"
+    "https://linkintime.co.in/*",
+    "https://www.bseindia.com/*"
   ],
   "background": {
     "service_worker": "js/background.js"
@@ -18,8 +19,20 @@
         "https://linkintime.co.in/*"
       ],
       "js": [
-        "js/jquery.min.js",
-        "js/content_script.js"
+        "js/lib/jquery.min.js",
+        "js/content.common.js",
+        "js/content.linkintime.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://www.bseindia.com/*"
+      ],
+      "js": [
+        "js/lib/jquery.min.js",
+        "js/content.common.js",
+        "js/content.bse.js"
       ],
       "run_at": "document_idle"
     }

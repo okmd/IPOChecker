@@ -26,9 +26,16 @@
                 <textarea id="inputValues" rows="7" class="form-control" required
                     placeholder="Enter comma-separated PAN cards."></textarea>
             </div>
-
-            <button id="checkButton" class="btn btn-success">Check Allotment</button>
-
+            <div>
+                <button id="checkButton" class="btn btn-success">Check Allotment</button>
+                <a class="btn btn-primary" target="_blank" href="https://linkintime.co.in/mipo/ipoallotment.html">LinkInTime</a>
+                <a class="btn btn-primary " target="_blank" href="https://www.bseindia.com/investors/appli_check.aspx">BSE</a>
+            
+                <div id="loadingSpinner" class="spinner-border text-primary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+              
             <div id="responseContainer" class="container">
                 <!-- Responses will be dynamically added through JavaScript -->
             </div>
@@ -36,10 +43,10 @@
     </div>
 
     <!-- Add Bootstrap JS and custom JS -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/popup.js"></script>
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="js/lib/popper.min.js"></script>
+    <script src="js/lib/bootstrap.min.js"></script>
+    <script src="js/test.js"></script>
 </body>
 
 </html>
