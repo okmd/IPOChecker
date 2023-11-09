@@ -17,17 +17,12 @@ body {
     color: #e41612;
 }
 
-.name_css {
+.allotted {
     color: #4CAF50;
     font-weight: bold;
 }
 
-.qty_css {
-    color: #4CAF50;
-    font-weight: bold;
-}
-
-.na {
+.not-allotted {
     color: #f44336;
     font-weight: bold;
 }

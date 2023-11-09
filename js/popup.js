@@ -105,11 +105,14 @@ class IPOCheckerLinkInTime {
     formatOutput(panCard, details, count) {
         console.log(details);
         const panCardFormatted = panCard.padEnd(10, " ");
+        const name = details[0];
+        const qty =  details[1];
+        const ok = name != null && qty != null;
+        const alloted = (ok && qty[1]!='0')?"allotted":"not-allotted";
         const qtyFormatted =
-            details[0] != null && details[1] != null
-                ? `<div class="name_css col-7">${details[0][1]}</div>
-             <div class="qty_css col-1">${details[1][1]}</div>`
-                : `<div class="na col-8">Not Found</div>`;
+            ok ? `<div class="${alloted} col-7">${name[1]}</div>
+                  <div class="${alloted} col-1">${qty[1]}</div>`
+                : `<div class="not-allotted col-8">Not Found</div>`;
         return `<div class="pan_card col-4">${count}:${panCardFormatted}</div>${qtyFormatted}`;
     }
 
