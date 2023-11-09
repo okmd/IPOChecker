@@ -108,11 +108,11 @@ class IPOCheckerLinkInTime {
         const name = details[0];
         const qty =  details[1];
         const ok = name != null && qty != null;
-        const alloted = (ok && qty[1]!='0')?"allotted":"not-allotted";
+        const alloted = (ok && qty[1]!='0')?"alloted bg-success":"not-alloted";
         const qtyFormatted =
             ok ? `<div class="${alloted} col-7">${name[1]}</div>
                   <div class="${alloted} col-1">${qty[1]}</div>`
-                : `<div class="not-allotted col-8">Not Found</div>`;
+                : `<div class="na col-8">Not Found</div>`;
         return `<div class="pan_card col-4">${count}:${panCardFormatted}</div>${qtyFormatted}`;
     }
 

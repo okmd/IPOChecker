@@ -13,16 +13,17 @@ body {
     padding: 0px;
 }
 
-.pan_card {
+.pan_card, .na {
     color: #e41612;
-}
-
-.allotted {
-    color: #4CAF50;
     font-weight: bold;
 }
 
-.not-allotted {
-    color: #f44336;
+.alloted {
+    color: white;
+    font-weight: bold;
+}
+
+.not-alloted {
+    color: #4CAF50;
     font-weight: bold;
 }
